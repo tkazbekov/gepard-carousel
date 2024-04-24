@@ -1,1 +1,5 @@
-<p>carousel-item works!</p>
+<div>
+  <img src="{{ slide.image }}" alt="{{ slide.title }}" />
+  <h3>{{ slide.title }}</h3>
+  <p [innerHTML]="getSlideCaption()"></p>
+</div>

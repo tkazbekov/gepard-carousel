@@ -16,3 +16,7 @@ body {
 main {
   min-height: calc(100vh - var(--header-height));
 }
+
+.highlight {
+  color: var(--color-text-accent);
+}
