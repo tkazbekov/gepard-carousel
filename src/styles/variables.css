@@ -1,0 +1,19 @@
+:root {
+    /* might need extra colors later */
+    --color-primary-500: #0d1d2e;
+    --color-primary-700: #071729;
+    --color-primary-200: #293847;
+
+    --color-text-primary: #FFFFFF;
+    --color-text-accent: #FFEC5A;
+
+    --ff-primary: 'Rubik', sans-serif;
+
+    --fs-normal: 1rem;
+    --fs-smaller: 0.875rem;
+    --fs-big: 1.625rem;
+
+    --fw-normal: 400;
+    --fw-semibold: 500;
+    --fw-bold: 700;
+}
