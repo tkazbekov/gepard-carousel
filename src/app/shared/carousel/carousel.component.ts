@@ -1,51 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 
-import type { Slide } from '../carousel-item/carousel-item';
+import { Slide, slides } from '../carousel-item/carousel-item';
 import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
+import { ObserveDirective } from '../directives/observe.directive';
+import { Subject, delay } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [CarouselItemComponent],
+  imports: [CarouselItemComponent, ObserveDirective],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css',
 })
 export class CarouselComponent implements OnInit {
-  slides: Slide[] = [
-    {
-      id: 1,
-      title: 'WinzUp Loyalty Program',
-      caption:
-        'Get up to 35% in rewards: daily rakeback, weekly cashback and level-up bonuses',
-      highlight: '35% in rewards',
-      image: 'assets/winzup.png',
-      bgImage: 'assets/winzup-bg.webp',
-      ctaCaption: 'Join now',
-    },
-    {
-      id: 2,
-      title: `Valentine's Fortune Drops`,
-      caption: 'Trigger random prizes and win a share of €30,000!',
-      highlight: '€30,000',
-      image: 'assets/vfd.png',
-      bgImage: 'assets/vfd-bg.png',
-      ctaCaption: 'Learn more',
-    },
-    {
-      id: 3,
-      title: 'Wheel of Winz',
-      caption: 'Spin the wheel to win up to €15,000 weekly',
-      highlight: '€15,000',
-      image: 'assets/wm.png',
-      bgImage: 'assets/wm-bg.webp',
-      ctaCaption: 'Spin now',
-    },
-  ];
+  public slides: Slide[] | undefined;
+  private queuedAction: 'left' | 'right' | undefined;
+  private slidesSubject = new Subject<Slide[]>();
 
   ngOnInit(): void {
+    this.slidesSubject.pipe(delay(2000)).subscribe((slides) => {
+      this.slides = slides;
+    })
+    this.getSlides();
+  }
+
+  getSlides() {
+    this.slidesSubject.next(slides);
+  }
+
+  onScrollEnd() {
+    if (this.queuedAction) {
+      this.addSlide(this.queuedAction);
+      this.queuedAction = undefined;
+    }
   }
 
   addSlide(direction: 'left' | 'right') {
+    if (!this.slides) {
+      return;
+    }
     if (direction === 'left') {
       this.slides.unshift(this.slides[this.slides.length - 1]);
       this.slides.pop();
@@ -56,9 +49,14 @@ export class CarouselComponent implements OnInit {
   }
 
   onVisible(id: number) {
-    console.log('onVisible', id);
+    if (!this.slides) {
+      return;
+    }
+    console.log(id);
     if (id === this.slides[0].id) {
-      this.addSlide('left');
+      this.queuedAction = 'left';
+    } else if (id === this.slides[this.slides.length - 1].id) {
+      this.queuedAction = 'right';
     }
   }
 }

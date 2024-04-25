@@ -1,13 +1,11 @@
 <div class="carousel-wrap">
-  <ul class="carousel">
+  <ul class="carousel" (scrollend)="onScrollEnd()" #carousel>
     @for (slide of slides; track slide.id) {
-    <li class="carousel-slide">
+    <li class="carousel-slide" observe (visible)="onVisible(slide.id)">
       <app-carousel-item [slide]="slide"></app-carousel-item>
     </li>
     } @empty {
     <p>loading</p>
     }
   </ul>
-  <button (click)="addSlide('left')">add slide on the left</button>
-  <button (click)="addSlide('right')">add slide on the right</button>
 </div>
