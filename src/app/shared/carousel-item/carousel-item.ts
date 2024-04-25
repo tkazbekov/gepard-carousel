@@ -5,4 +5,5 @@ export interface Slide {
   image: string;
   bgImage: string;
   highlight?: string;
+  ctaCaption: string;
 }

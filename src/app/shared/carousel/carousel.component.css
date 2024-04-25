@@ -15,6 +15,7 @@
 
 .carousel-slide {
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   flex: 1 0 100%;
   list-style: none;
   padding: 0;

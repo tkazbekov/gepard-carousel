@@ -1,5 +1,8 @@
-<div>
-  <img src="{{ slide.image }}" alt="{{ slide.title }}" />
-  <h3>{{ slide.title }}</h3>
-  <p [innerHTML]="getSlideCaption()"></p>
+<div class="container">
+  <div class="wrapper" [style.background-image]="'url(' + slide.bgImage + ')'">
+    <img class="image" src="{{ slide.image }}" alt="{{ slide.title }}" />
+    <h3 class="title">{{ slide.title }}</h3>
+    <p class="caption" [innerHTML]="getSlideCaption()"></p>
+    <button role="button" class="cta-button">{{ slide.ctaCaption }}</button>
+  </div>
 </div>

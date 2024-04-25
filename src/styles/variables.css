@@ -4,8 +4,10 @@
     --color-primary-700: #071729;
     --color-primary-200: #293847;
 
-    --color-text-primary: #FFFFFF;
-    --color-text-accent: #FFEC5A;
+    --color-text-primary: var(--color-white);
+    --color-text-accent: #ffec5a;
+    
+    --color-white: #ffffff;
 
     --ff-primary: 'Rubik', sans-serif;
 

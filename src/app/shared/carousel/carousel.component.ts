@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import type { Slide } from '../carousel-item/carousel-item';
 import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
@@ -10,7 +10,7 @@ import { CarouselItemComponent } from '../carousel-item/carousel-item.component'
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css',
 })
-export class CarouselComponent {
+export class CarouselComponent implements OnInit {
   slides: Slide[] = [
     {
       id: 1,
@@ -20,6 +20,7 @@ export class CarouselComponent {
       highlight: '35% in rewards',
       image: 'assets/winzup.png',
       bgImage: 'assets/winzup-bg.webp',
+      ctaCaption: 'Join now',
     },
     {
       id: 2,
@@ -28,6 +29,7 @@ export class CarouselComponent {
       highlight: '€30,000',
       image: 'assets/vfd.png',
       bgImage: 'assets/vfd-bg.png',
+      ctaCaption: 'Learn more',
     },
     {
       id: 3,
@@ -36,8 +38,12 @@ export class CarouselComponent {
       highlight: '€15,000',
       image: 'assets/wm.png',
       bgImage: 'assets/wm-bg.webp',
+      ctaCaption: 'Spin now',
     },
   ];
+
+  ngOnInit(): void {
+  }
 
   addSlide(direction: 'left' | 'right') {
     if (direction === 'left') {
@@ -46,6 +52,13 @@ export class CarouselComponent {
     } else if (direction === 'right') {
       this.slides.push(this.slides[0]);
       this.slides.shift();
+    }
+  }
+
+  onVisible(id: number) {
+    console.log('onVisible', id);
+    if (id === this.slides[0].id) {
+      this.addSlide('left');
     }
   }
 }
