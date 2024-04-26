@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Slide, slides } from '../carousel-item/carousel-item';
+import { Slide } from '../carousel-item/carousel-item';
 import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
 import { ObserveDirective } from '../directives/observe.directive';
-import { Subject, delay } from 'rxjs';
+import { SlidesService } from '../services/slides.service';
 
 @Component({
   selector: 'app-carousel',
@@ -15,17 +15,17 @@ import { Subject, delay } from 'rxjs';
 export class CarouselComponent implements OnInit {
   public slides: Slide[] | undefined;
   private queuedAction: 'left' | 'right' | undefined;
-  private slidesSubject = new Subject<Slide[]>();
+
+  constructor(private slidesService: SlidesService) {}
 
   ngOnInit(): void {
-    this.slidesSubject.pipe(delay(2000)).subscribe((slides) => {
-      this.slides = slides;
-    })
     this.getSlides();
   }
 
   getSlides() {
-    this.slidesSubject.next(slides);
+    this.slidesService.getSlides().subscribe((slides) => {
+      this.slides = slides;
+    })
   }
 
   onScrollEnd() {

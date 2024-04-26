@@ -1,21 +1,22 @@
 .welcome-container {
-    padding: 1rem;
+  padding: 2rem 1rem;
 }
 .welcome-heading {
-    font-size: 2rem;
-    line-height: 1.1em;
-    margin-bottom: .5rem;
-    font-weight: var(--fw-bold);
+  font-size: 2rem;
+  line-height: 1.1em;
+  margin-bottom: 2rem;
+  font-weight: var(--fw-bold);
 }
 
 .welcome-subheading {
-    font-size: var(--fs-normal);
-    line-height: 1.1em;
-    font-weight: var(--fw-semibold);
-    font-style: italic;
+  font-size: var(--fs-normal);
+  line-height: 1.1em;
+  font-weight: var(--fw-semibold);
+  font-style: italic;
+  margin-bottom: 1rem;
 }
 
 .welcome-text {
-    font-size: var(--fs-smaller);
-    margin-top: 1rem;
+  font-size: var(--fs-smaller);
+  margin-top: 1rem;
 }
