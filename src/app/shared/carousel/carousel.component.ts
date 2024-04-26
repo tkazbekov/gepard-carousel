@@ -52,7 +52,6 @@ export class CarouselComponent implements OnInit {
     if (!this.slides) {
       return;
     }
-    console.log(id);
     if (id === this.slides[0].id) {
       this.queuedAction = 'left';
     } else if (id === this.slides[this.slides.length - 1].id) {

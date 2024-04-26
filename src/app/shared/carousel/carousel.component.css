@@ -19,4 +19,5 @@
   flex: 1 0 100%;
   list-style: none;
   padding: 0;
+  z-index: -1;
 }

@@ -1,0 +1,25 @@
+.panel {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--color-primary-200);
+}
+
+.panel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.item-icon {
+  background-color: var(--color-primary-200);
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.item-caption {
+  font-size: 0.625rem;
+}
