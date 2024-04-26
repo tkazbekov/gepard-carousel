@@ -1,4 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 import type { Slide } from './carousel-item';
 
@@ -8,9 +15,19 @@ import type { Slide } from './carousel-item';
   imports: [],
   templateUrl: './carousel-item.component.html',
   styleUrl: './carousel-item.component.css',
+  animations: [
+    trigger('fadeIn', [
+      state('in', style({ opacity: 1, transform: 'translateY(0)' })),
+      state('out', style({ opacity: 0, transform: 'translateY(50%)' })),
+      transition('out => in', animate('300ms ease-in-out')),
+    ]),
+  ],
 })
-export class CarouselItemComponent {
+export class CarouselItemComponent implements AfterViewInit {
   @Input() slide!: Slide;
+  visible = false;
+
+  constructor(private elementRef: ElementRef) {}
 
   getSlideCaption() {
     if (this.slide.highlight) {
@@ -21,5 +38,19 @@ export class CarouselItemComponent {
       );
     }
     return this.slide.caption;
+  }
+
+  ngAfterViewInit() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0) {
+          }
+          this.visible = entry.intersectionRatio >= 0.5;
+        });
+      },
+      { rootMargin: '0px', threshold: [0.3, 0.7] }
+    );
+    observer.observe(this.elementRef.nativeElement);
   }
 }
