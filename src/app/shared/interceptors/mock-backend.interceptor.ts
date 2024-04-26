@@ -1,9 +1,9 @@
 import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
 
-import { Slide } from '../carousel-item/carousel-item';
 import { delay, of } from 'rxjs';
+import { Slide } from '../types/Slide';
 
-export const slides: Slide[] = [
+const slides: Slide[] = [
   {
     id: 1,
     title: 'WinzUp Loyalty Program',

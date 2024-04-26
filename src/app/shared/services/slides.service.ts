@@ -1,15 +1,19 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Slide } from '../carousel-item/carousel-item';
+import { Injectable, WritableSignal, signal } from '@angular/core';
+
+import { Slide } from '../types/Slide';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SlidesService {
+  public slides: WritableSignal<Slide[]> = signal([]);
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getSlides() {
-    return this.httpClient.get<Slide[]>('https://example.com/getSlides');
+    this.httpClient.get('url').subscribe((data) => {
+      this.slides.set(data as Slide[]);
+    });
   }
 }

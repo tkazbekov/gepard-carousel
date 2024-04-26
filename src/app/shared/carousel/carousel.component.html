@@ -1,7 +1,7 @@
 <div class="carousel-wrap">
-  <ul class="carousel" (scrollend)="onScrollEnd()" #carousel>
-    @for (slide of slides; track slide.id) {
-    <li class="carousel-slide" observe (visible)="onVisible(slide.id)">
+  <ul class="carousel">
+    @for (slide of slidesService.slides(); track slide.id) {
+    <li class="carousel-slide">
       <app-carousel-item [slide]="slide"></app-carousel-item>
     </li>
     } @empty {

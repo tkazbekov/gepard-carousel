@@ -7,7 +7,7 @@ import {
   trigger,
 } from '@angular/animations';
 
-import type { Slide } from './carousel-item';
+import { Slide } from '../types/Slide';
 
 @Component({
   selector: 'app-carousel-item',
