@@ -6,7 +6,12 @@
       alt="{{ slide.title }}"
       [@animate]="animate || preventAnimations() ? 'in' : 'out'"
     />
-    <h3 class="title" [@animate]="animate || preventAnimations() ? 'in' : 'out'">{{ slide.title }}</h3>
+    <h3
+      class="title"
+      [@animate]="animate || preventAnimations() ? 'in' : 'out'"
+    >
+      {{ slide.title }}
+    </h3>
     <p
       class="caption"
       [innerHTML]="getSlideCaption()"

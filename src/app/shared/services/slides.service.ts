@@ -68,7 +68,7 @@ export class SlidesService {
         copySlideWithMockId(slides[0]),
       ];
     });
-    this.startAutoScroll()
+    this.startAutoScroll();
   }
 
   nextSlide() {

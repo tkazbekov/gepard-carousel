@@ -1,7 +1,12 @@
 <div class="carousel-wrap" #wrap>
   <ul class="carousel">
     @for (slide of slidesService.slides(); track slide.id; let i = $index) {
-    <li class="carousel-slide" sliderObserver [index]="i" (visible)="onVisible(i)">
+    <li
+      class="carousel-slide"
+      sliderObserver
+      [index]="i"
+      (visible)="onVisible(i)"
+    >
       <app-carousel-item [slide]="slide"></app-carousel-item>
     </li>
     } @empty {
