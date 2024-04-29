@@ -15,11 +15,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## How to run
 Pretty standard angular process:
-```npm i
+```
+npm i
 npm run start
 ```
 
 You can also build and start a dev server to be sure:
-```npm run build
+```
+npm run build
 npm run dev
 ```
