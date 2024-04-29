@@ -1,4 +1,4 @@
-.carousel {
+.carousel-wrap {
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -11,6 +11,13 @@
   margin: 0 auto;
   padding: 0;
   list-style: none;
+}
+
+.carousel {
+  display: flex;
+  flex: 1 0 100%;
+  list-style: none;
+  padding: 0;
 }
 
 .carousel-slide {

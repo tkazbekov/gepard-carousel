@@ -34,6 +34,12 @@ const slides: Slide[] = [
   },
 ];
 
-export const mockBackendInterceptor: HttpInterceptorFn = (req, next) => {
-  return of(new HttpResponse({ status: 200, body: slides })).pipe(delay(1000));
+/**
+ * Mock backend interceptor function that intercepts any http request and returns a mock response
+ * No need to edit since we only have 1 request to simulate
+ * 
+ * @returns Observable<HttpResponse<Slide[]>> An observable of slides with a 1 second delay
+ */
+export const mockBackendInterceptor: HttpInterceptorFn = () => {
+  return of(new HttpResponse({ status: 200, body: slides })).pipe(delay(2000));
 };

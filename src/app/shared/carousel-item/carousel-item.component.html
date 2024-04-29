@@ -1,8 +1,23 @@
-<div class="container">
+<div class="container" [@.disabled]="preventAnimations()">
   <div class="wrapper" [style.background-image]="'url(' + slide.bgImage + ')'">
-    <img class="image" src="{{ slide.image }}" alt="{{ slide.title }}" [@fadeIn]="visible ? 'in' : 'out'" />
-    <h3 class="title" [@fadeIn]="visible ? 'in' : 'out'">{{ slide.title }}</h3>
-    <p class="caption" [innerHTML]="getSlideCaption()" [@fadeIn]="visible ? 'in' : 'out'"></p>
-    <button role="button" class="cta-button" [@fadeIn]="visible ? 'in' : 'out'">{{ slide.ctaCaption }}</button>
+    <img
+      class="image"
+      src="{{ slide.image }}"
+      alt="{{ slide.title }}"
+      [@animate]="animate || preventAnimations() ? 'in' : 'out'"
+    />
+    <h3 class="title" [@animate]="animate || preventAnimations() ? 'in' : 'out'">{{ slide.title }}</h3>
+    <p
+      class="caption"
+      [innerHTML]="getSlideCaption()"
+      [@animate]="animate || preventAnimations() ? 'in' : 'out'"
+    ></p>
+    <button
+      role="button"
+      class="cta-button"
+      [@animate]="animate || preventAnimations() ? 'in' : 'out'"
+    >
+      {{ slide.ctaCaption }}
+    </button>
   </div>
 </div>
