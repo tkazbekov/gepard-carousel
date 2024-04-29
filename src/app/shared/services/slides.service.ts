@@ -78,7 +78,7 @@ export class SlidesService {
   startAutoScroll() {
     this.timer = setInterval(() => {
       this.nextSlide();
-    }, 2000); // 2 seconds should do fine
+    }, 10000); // 10 seconds as in the task
   }
 
   stopAutoScroll() {
